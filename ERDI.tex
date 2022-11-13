@@ -1,7 +1,8 @@
 \documentclass[a4paper, 12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[scale=.9]{geometry}
+\usepackage[scale=.8]{geometry}
+\usepackage[french]{babel}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -30,8 +31,8 @@
     des effets catastrophiques.
 
     \subsection{Quelques statistiques}
-      Un très bon moyen de visualiser l'ampleur que le cloud à prit dans le
-      monde est de l'illustrer par quelques statistiques
+      Un bon moyen de visualiser l'ampleur que le cloud à prit dans le monde est
+      de l'illustrer par quelques statistiques
       \begin{itemize}
         \item Environ 94\% des entreprises utilisent des services de cloud.
         \item En 2025, selon les prévisions actuelles, 100 zettabytes de données
@@ -39,7 +40,8 @@
               \footnote{Cela représente 10$^{23}$ octets de données soit
               10$^{11}$ disques dur de 1To}.
         \item En 2013, au total, seulement un exabyte de données était stocké
-              sur des services de cloud\footnote{100 zettabytes = 100000 exabytes}.
+              sur des services de cloud\footnote{100 zettabytes = 100000
+              exabytes}.
       \end{itemize}
 
       On peut voir par ces quelques statistiques que non seulement le nombre de
@@ -63,10 +65,52 @@
       fonctionnalités concernant l'accès réseau et le système de stockage
       utilisé.
 
-    \subsection{Différents types de déploiements}
-      Les services de cloud peuvent être déployés de plusieurs manières
+  \section{Les failles de sécurité qui peuvent mener à un vol de donnée}
+    L'inquiétude suscitée par le cloud est que ce genre de service hébèrge
+    énormément d'utilisateurs. Si un attaquant réussi à pénétrer le cloud, il
+    met la main sur les données de l'intégralité des personnes qui en font
+    l'usage. Nous allons donc voir ce qui pourrait permettre à un attaquant de
+    pouvoir voler les données stockées en ligne dans ce type de service.
 
-  \section{Les risques de l'utilisation de services de cloud}
+    \subsection{La gestion de la mémoire dans le cloud}
+      Le cloud est comme un disque dur géant, et à l'image d'un disque dur de
+      taille normale partagé par plusieurs systèmes et/ou utilisateurs, il est
+      important de se concentrer sur la gestion de l'espace alloué à chacun.
+
+      Un des problèmes cité page 3/4 de cette étude [VR2016] est le fait que la
+      mémoire effacée peut être récupérée. En effet, \textit{"The resource
+      allocated to a particular user may be assigned to the other user at some
+      later point of time"}\footnote{Traduction : l'espace alloué à un
+      utilisateur peut être assigné à un autre à un autre moment}. Les services
+      de cloud marchent nécessairement avec un système d'allocation de mémoire
+      dynamique en fonction de la requête d'espace de l'utilisateur. Les
+      services n'ayant pas une quantité infinie de stockage, Un morceau de
+      l'espace va surement être utilisé successivement par plusieurs
+      utilisateurs différents. L'utilisateur de ce morceau de l'espace pourra
+      donc potentiellement récupérer d'anciennes données effacées qui ne lui
+      appartiennent pas.
+
+      En effet, sur la plupart des machines, il est possible de récupérer des
+      données qui ont été effacés. Les données ne sont en réalité pas rééllement
+      effacées tant que le disque ou le dispositif de stockage n'a pas réécrit
+      d'autres données par dessus. Si un utilisateur dispose d'un morceau de la
+      plage mémoire allouée précedémment à un autre utilisateur, il pourra donc
+      tenter de les récupérer. \\
+
+      Un autre problème posé par le partage massif du cloud est la fragmentation
+      de la mémoire. En effet, un problème pourraient résider dans la mauvaise
+      ségmentation de la mémoire. Ceci pourrait permettre l'accès au même
+      morceau de mémoire par plusieurs personnes, et un utilisateur pourrait
+      voler des données à un autre, ou même récupérer des données supprimées
+      comme dit plus haut.
+
+    \subsection{Risques physiques}
+      Les clouds sont des espaces de stockages, il est aussi nécessaire de
+      considérer les menaces liées aux supports de stockages physiques des
+      données comme les centres de stockages. Un attaquant pourrait très bien
+      décider de pirater physiquement un centre de données, il est donc aussi
+      nécessaire de se prémunir des risques physiques liées à l'intégrité des
+      données stockées dans le cloud.
 
   \section{Anticipation et prévention des risques}
 
@@ -75,9 +119,6 @@
   \section{Conclusion}
 
   \section{Annexes}
-    \begin{figure}
-
-    \end{figure}
 
   \section{Bibliographie}
     \begin{itemize}
@@ -87,6 +128,11 @@
       \item \href{https://aws.amazon.com/fr/types-of-cloud-computing/}{Différents types de cloud et de services proposés} : \url{https://aws.amazon.com}
       \item \href{https://www.redhat.com/fr/topics/cloud-computing/what-is-iaas}{Le type de service IaaS et comparaisons avec PaaS et SaaS} : \url{https://www.redhat.com/}
       \item \href{https://www.javatpoint.com/cloud-deployment-model}{Différents types de déploiement des services de cloud} : \url{https://www.javatpoint.com/}
+      \item \href{https://www.cyberuniversity.com/post/la-securite-dans-le-cloud-principaux-risques-et-challenges}{Principaux risques encourus en stockant sur le cloud} : \url{https://www.cyberuniversity.com/}
+      \item \href{https://www.sciencedirect.com/science/article/pii/S1877050916315812}{[VR2016] A Study on Data Storage Security Issues in Cloud Computing} : \url{https://www.sciencedirect.com/}
+      \item \href{https://www.techtarget.com/searchdisasterrecovery/definition/data-recovery}{Récupération de données effacées} : \url{https://www.techtarget.com/}
+      \item \href{https://www.runtime.org/recoverability.htm}{Autres données sur la récupération de données effacées} : \url{https://www.runtime.org/}
+      \item \href{https://www.techniques-ingenieur.fr/actualite/articles/la-securite-dans-le-cloud-une-approche-fournisseur-basee-sur-les-risques-15550/}{Différents risques liés cloud} : \url{https://www.techniques-ingenieur.fr/}
     \end{itemize}
 
 \end{document}
