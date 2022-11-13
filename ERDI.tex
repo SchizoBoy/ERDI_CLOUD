@@ -65,16 +65,39 @@
       fonctionnalités concernant l'accès réseau et le système de stockage
       utilisé.
 
-  \section{Les failles de sécurité qui peuvent mener à un vol de donnée}
+  \section{Les failles de sécurité qui peuvent mener à un vol de données}
     L'inquiétude suscitée par le cloud est que ce genre de service hébèrge
     énormément d'utilisateurs. Si un attaquant réussi à pénétrer le cloud, il
     met la main sur les données de l'intégralité des personnes qui en font
     l'usage. Nous allons donc voir ce qui pourrait permettre à un attaquant de
     pouvoir voler les données stockées en ligne dans ce type de service.
 
+    \subsection{Erreurs humaines et contrôle d'accès}
+      La grande majorité des failles qui ont mené à des vols de données sur un
+      cloud proviennent d'une erreur humaine, on peut citer parmis elles les
+      défauts de configuration. c'est le modèle IaaS qui est mis en cause dans
+      la plupart des cas. En effet, ce modèle de cloud est très flexible et
+      permet aux utilisateurs de pouvoir configurer et gérer de nombreux aspects
+      du cloud qu'ils utilisent, en les configurant potentiellement d'une façon
+      trop peu sécurisée. Selon l'étude [AF2019], \textit{about 99\% of
+      misconfigurations go unnoticed by companies using IaaS}
+      \footnote{Traduction : Environ 99\% des erreurs de configurations ne sont
+      pas remarquées par les entreprises utilisant le modèle IaaS}. \\
+
+      Des erreurs peuvent aussi être commises losqu'il s'agit de l'accès des
+      utilisateurs aux services et aux données stockées. Parfois un trop grand
+      nombre de personne peut avoir accès à des données sensibles, par exemple
+      au sein d'une entreprise, sans pour autant que cela soit nécessaire, cela
+      découlant d'un manque de contrôle de ces accès. Laisser à trop de
+      personnes l'accès à des données sensibles multiplie le risque d'attaque.
+      On peut imaginer un attaquant extérieur qui pourrait vouloir pénétrer le
+      stockage par ricochet en utilisant les utilisateurs concernés, mais aussi
+      les utilisateurs eux-mêmes qui pourrait cacher un attaquant interne, il
+      est donc nécessaire d'assurer un contrôle des accès rigoureux.
+
     \subsection{La gestion de la mémoire dans le cloud}
-      Le cloud est comme un disque dur géant, et à l'image d'un disque dur de
-      taille normale partagé par plusieurs systèmes et/ou utilisateurs, il est
+      À l'image d'un disque dur de taille normale, le cloud est un espace de
+      stockage partagé par plusieurs systèmes et/ou utilisateurs, il est
       important de se concentrer sur la gestion de l'espace alloué à chacun.
 
       Un des problèmes cité page 3/4 de cette étude [VR2016] est le fait que la
@@ -133,6 +156,9 @@
       \item \href{https://www.techtarget.com/searchdisasterrecovery/definition/data-recovery}{Récupération de données effacées} : \url{https://www.techtarget.com/}
       \item \href{https://www.runtime.org/recoverability.htm}{Autres données sur la récupération de données effacées} : \url{https://www.runtime.org/}
       \item \href{https://www.techniques-ingenieur.fr/actualite/articles/la-securite-dans-le-cloud-une-approche-fournisseur-basee-sur-les-risques-15550/}{Différents risques liés cloud} : \url{https://www.techniques-ingenieur.fr/}
+      \item \href{https://www.magic.fr/cloud-public-les-erreurs-de-configuration-sont-extremement-frequentes/}{Erreurs humaines, défauts de configuration} : \url{https://www.magic.fr/}
+      \item \href{https://www.mcafee.com/enterprise/en-us/assets/reports/restricted/rp-cloud-adoption-risk-report-iaas.pdf}{[AF2019] Cloud-Native: The Infrastructure-as-a-Service
+(IaaS) Adoption and Risk Report} : \url{https://www.mcafee.com/}
     \end{itemize}
 
 \end{document}
