@@ -72,8 +72,8 @@
     pouvoir voler les données stockées en ligne dans ce type de service.
 
     \subsection{Erreurs humaines et contrôle d'accès}
-      La grande majorité des failles qui ont mené à des vols de données sur un
-      cloud proviennent d'une erreur humaine, on peut citer parmis elles les
+      La grande majorité des failles qui ont mené à des vols de données sur 
+      un cloud proviennent d'une erreur humaine, on peut citer parmis elles les
       défauts de configuration. c'est le modèle IaaS qui est mis en cause dans
       la plupart des cas. En effet, ce modèle de cloud est très flexible et
       permet aux utilisateurs de pouvoir configurer et gérer de nombreux aspects
@@ -135,8 +135,36 @@
       données stockées dans le cloud.
 
   \section{Anticipation et prévention des risques}
+      L'identification des riques liés à une installation dans le cloud est
+      importante car elle permet de pouvoir réfléchir à des moyens d'anticiper
+      les attaques et de les prévenir. Pour cela, on se penche sur différents 
+      aspects sources de risques, et par conséquent nécessaire à sécuriser.
 
-    \subsection{Un aspect physique et technique}
+    \subsection{Un aspect technique}
+      Afin de permettre une sécurisation du cloud, il est nécessaire de 
+      s'intéresser à l'aspect technique. Par aspect technique, on entend ici
+      le côté interne aux systèmes et les procédures à mettre en place au 
+      niveau de la configuration système et logicielle. \\
+
+      Dans un premier temps, il est bien évidemment nécessaire de limiter les 
+      accès à la plateforme. Que ce soit en passant par des mots de passes 
+      sécurisés ou éventuellement en optant pour une authentification à double
+      facteurs. L'accès au cloud est crucial puisque contrairement à un système
+      plus classique, le cloud étant une seule machine qui plus est connue de
+      tous, les points d'entrées d'éventuelles attaques sont centralisés. \\
+
+      Toujours dans cette même idée de contrôle d'accès il est judicieux de 
+      détenir un pare-feux afin de filtrer les connexions sur les serveurs 
+      distants. Cela ne s'applique pas à tous les types de clouds car dans
+      le cas d'un cloud SaaS, ce côté là sera géré par le fournisseur de 
+      services. \\
+
+      Étant dans un environnement cloud, on peut aussi utiliser un CASB ou
+      Cloud Access Security Broker. Il s'agit d'une solution d'ensemble 
+      permettant de recenser l'ensemble des applications du cloud afin de
+      répertorier et classifier les potentielles vulnérabilités.
+
+    \subsection{Un aspect physique}
       Les clouds étant des espaces de stockages numériques auxquels un 
       utilisateur à très peu voir pas du tout d'accès sur le plan physique. 
       Qu'il soit un particulier ou une entreprise, lorsqu'un utilisateur 
@@ -160,7 +188,7 @@
       stockage de données, il est aussi nécessaire de prévoir une redirection 
       du service vers une autre plateforme fonctionnelle afin de garantir qu'il
       n'y ait aucune interruption de service.
-
+      
     \subsection{Un aspect social}
       Le domaine de l'ingénieurie sociale est en hausse car il s'agit très 
       certainement de la méthode la plus simple et non moins efficace pour 
