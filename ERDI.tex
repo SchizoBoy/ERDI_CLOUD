@@ -154,7 +154,15 @@
       Pour une entreprise du cloud il est aussi nécessaire de définir
       clairement des règles de conduite pour l'ensemble du personnel afin
       d'éviter au maximum les failles de sécurité sensibles à l'ingénieurie
-      sociale.
+      sociale. D'autant plus que ce sont des failles critiques qui peuvent
+      parfois déboucher sur des pertes de données conséquentes. \\
+
+      Pour revenir sur un court exemple, on pourrait reparler de l'attaque 
+      subie par l'entreprise Uber en 2022 qui à eu lieu suite à un fait 
+      d'ingénieurie sociale qui a permis à un attaquant l'accès à l'un des 
+      comptes administrateur de l'entreprise. Avec une politique de conduite 
+      plus stricte et une mise en garde sur les risques, l'attaque aurait pu 
+      être détectée plus tôt et surtout évitée. \\
 
     \subsection{Sur le plan physique}
       Les clouds étant des espaces de stockages numériques auxquels un
@@ -171,7 +179,9 @@
       l'organisation, les clients, les données, les systèmes etc.} ou SAS 70
       \footnote{State on Auditing Standards no. 70, remplacée par SSAE16. Il
       s'agit d'une certification spécialisée pour les centre de données} par
-      exemple. \\
+      exemple. De plus, certains fournisseurs de cloud ont une politique de 
+      confidentialité concernant l'emplacement et les spécificités de leurs 
+      datacenters afin de se prémunir contre les menaces. \\
 
       Tout cela étant dit, une perte de donnée ou une rupture d'accès à un
       service dans le cloud ne provient pas toujours d'une action volontaire
@@ -188,45 +198,58 @@
       service pour des applications cloud qui y seraient sensibles.
 
     \subsection{Sur le plan technique}
-      Afin de permettre une sécurisation du cloud, il est nécessaire de
-      s'intéresser à l'aspect technique. Par aspect technique, on entend ici
-      le côté interne aux systèmes et à leur configuration. Que ce soit au
-      niveau de la configuration système ou logicielle ou éventuellement grâce
-      à des logiciels de sécurité clé en main centralisant et rassemblant
-      diverses solutions de sécurité. \\
+      L'une des difficultés d'un système dans le cloud réside dans les 
+      responsabilités d'actions ambiguës. En effet, si l'on considère les 
+      trois types de cloud, à savoir IaaS, PaaS et SaaS, il est parfois 
+      difficile pour un utilisateur de comprendre quelles actions sont à 
+      sa charge. \\
 
-      Au niveau des solutions techniques, tous les types de clouds ne sont pas
-      logés à la même enseigne. En effet, un utilisateur de cloud de type SaaS
-      n'aura pas les mêmes responsabilités et les mêmes obligations qu'un
-      utilisateur de cloud de type IaaS par exemple. Quoiqu'il en soit, les
-      mêmes solutions seront finalement implantés sur le service, il s'agit
-      uniquement de comprendre que les tâches de sécurisation de
-      l'infrastructure seront partagées entre le fournisseur de services et
-      le client. \\
+      Dans le cas d'un cloud SaaS, l'utilisateur a très peu de contrôle sur 
+      la manière dont les choses vont fonctionner à l'intérieur de sa machine.
+      En réalité, l'ensemble de la configuration système et logicielle sur 
+      laquelle va reposer son service est aux mains du fournisseur d'accès.
+      Cela a de nombreux avantages puisque l'ensemble des côuts d'architecture
+      et de sécurisation sont finalement gérés par le fournisseur de service qui 
+      garantit en plus de cela un niveau de sécurité en théorie plus 
+      intéressant du fait de son expertise sur ses propres systèmes. Un point 
+      crucial et pourtant évident reste cependant aux mains de l'utilisateur. 
+      Il s'agit du choix de moyens d'authentification aussi sécurisés que 
+      possible, quite à utiliser de l'authentification multi-factorielle voir
+      de l'expiration de mots de passes. Il s'agit là du seul point vraiment 
+      sensible de cette configuration. \\
 
-      Le premier mécanisme de sécurité nécessaire à implanter est un système
-      d'authentification sécurisé. Cela passe évidemment par l'utilisation
-      de mots de passes suffisemment sûrs avec pourquoi pas une expiration
-      afin de forcer le ou les utilisateurs à le changer régulièrement. Il
-      s'agit d'une pratique courante dans le monde de l'entreprise qui a tout
-      autant de sens au sein d'une installation cloud. On peut aussi utiliser
-      de l'authentification multi-factorielle afin de renforcer d'autant plus
-      la sécurité d'accès au service. Ce point sur la sécurisation de l'accès
-      est crucial sur une installation de ce type puisque l'ensemble des
-      vulnérabilités du cloud se situe au sein d'une seule infrastructure
-      qui plus est connue de tous. Et c'est bien là sa particularité. \\
+      L'utilisation d'un cloud de type PaaS n'est pas très différente de 
+      celle d'un SaaS d'un point de vue sécurité informatique. L'utilisateur 
+      n'aura pas non plus à s'occuper de la configuration système et logicielle
+      qui reste ainsi au fournisseur. Cependant un utilisateur de ce type de 
+      cloud devra se charger de la sécurité des applications qu'il décidera de 
+      déployer sur le système ainsi que de leurs services associés comme les 
+      bases de données par exemple. La gestion de la sécurité de ces 
+      applications peut être déléguée à des experts, ou dans le cas d'une
+      entreprise suffisamment importante, elle sera très certainement gérée 
+      par l'un des services de l'entreprise en question. \\
 
-      Connaissant les particularités d'une installation dans le cloud, des
-      outils spécifiques ont été développés afin de permettre aux entreprises
-      une gestion efficace de leurs installations. C'est nottament le cas des
-      CASB \footnote{CASB pour Cloud Access Security Broker}. Un CASB est un
-      outil de sécurité regroupant différentes stratégies. Il est positionné
-      entre un utilisateur et le cloud. Son rôle est d'assurer la visibilité
-      des applications s'exécutant dans le cloud à la manière d'un système de
-      monitoring tout en maintenant la sécurité des données et en offrant une
-      protection contre les menaces. \\
+      Même si l'utilisation d'un cloud SaaS ou Paas semble idéale d'un point 
+      de vue sécurité pour la plupart des utilisateurs, il ne s'agit cependant 
+      pas d'une solution universelle puisque certains utilisateur particuliers 
+      ou entreprises ont besoin de plus de flexibilité. Plus de flexibilité 
+      implique inévitablement plus de responsabilités. Ainsi sur un cloud de 
+      type IaaS, l'utilisateur se trouve pratiquement sur une machine vide sur 
+      laquelle il va devoir installer un système d'exploitation et procéder à 
+      sa configuration. Par dessus ce système, il faut ensuite installer les
+      logiciels et applications nécessaires. A ce moment là, sécuriser le 
+      système se rapproche finalement de ce que l'on connaissait par le passé
+      quand chaque enntreprise disposait de sa propre installation physique. \\
 
-      Malgré ce qui existe comme solutions aujourd'hui, la sécurité du cloud
+      La complexité de la sécurisation d'un système cloud réside plus souvent
+      du côté du fournisseur de cloud tel qu'Azure, AWS, OVH et beaucoup 
+      d'autres. De ce côté là chaque fournisseur développe ses propres 
+      technologies de sécurité. Les technologies et outils sont nombreux mais
+      on peut citer les systèmes d'authentification basés sur les privilèges, 
+      les systèmes de monitoring et d'analyse du système ou bien des logiciels 
+      de chiffrement des données par exemple. \\
+
+      Malgré les solutions qui existent aujourd'hui, la sécurité du cloud
       reste un des enjeux de ces prochaines années car il est encore difficile
       d'assurer une installation fiable de manière pérenne sans déployer de
       gros moyens financiers et humains.
