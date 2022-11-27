@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[scale=.8]{geometry}
-\usepackage[french]{babel}
+\usepackage[french, english]{babel}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -18,81 +18,143 @@
   \tableofcontents
   \newpage
 
+  \selectlanguage{french}
+  \begin{abstract}
+    Ce rapport présente une étude sur ce que peut représenter la sécurité
+    informatique dans le domaine du cloud. Nous distinguerons d'abord quels
+    peuvent les phénomènes et les failles que l'on peut rencontrer dans la
+    gestion d'un service cloud. Ensuite, nous exposerons des techniques
+    actuelles permettant de se prémunir avec plus ou moins d'efficacité de ces
+    failles. Enfin, nous nous demanderons si dans l'avenir, l'intelligence
+    artificielle ne pourrait pas être une solution particulièrement viable dans
+    l'anticipation des risques et des menaces concernant le cloud.
+  \end{abstract}
+
+  \selectlanguage{english}
+  \begin{abstract}
+    This study report deals with the security in the cloud computing domain and
+    what can it represent. We will first discuss about how a cloud can be
+    exposed to security breaches, and what are they. Then, we will expose some
+    of the current techniques that can, with more or less efficacity, protect
+    the cloud from those breaches. To conclude, we will ask ourselves if the
+    artificial intelligence could be a efficient way to prevent cloud breaches
+    and attacks in the future.
+  \end{abstract}
+
+  \selectlanguage{french}
   \section{Introduction}
     Aujourd'hui, une majorité de nos données personnelles, professionnelles,
     publiques comme privées, transitent par des services de stockage en ligne,
     des données qui peuvent aller de simples images publiques à des données
-    confidentielles comme par exemple des données bancaires ou encore des
-    documents secrets pouvant impacter l'intégralité d'un pays ou même du monde.
+    confidentielles pouvant mettre en péril des entreprises, des collectivités
+    ou même des nations. \\
 
-    Il est impératif de s'assurer de la sécurité de ses services de stockage,
-    car les conséquences découlant de possibles négligeances pourraient avoir
-    des effets catastrophiques.
+    Le cloud désigne l'ensemble des serveurs auquel on peut accéder en ligne,
+    ces serveurs peuvent héberger non seulement des données, mais aussi des
+    services, des logiciels, etc. Des entreprises comme Microsoft, Amazon ou
+    encore OVH proposent de louer des serveurs afin que les particuliers comme
+    les entreprises puissent héberger des services en ligne. On distingue ici
+    quatres modèles de cloud proposé par les fournisseurs, le modèle sur site,
+    IaaS, PaaS et SaaS, \footnote{aaS signifie as-a-Service, cette mention
+    signifie qu'un fournisseur prend en charge la gestion du service et de
+    certaines fonctionnalités pour les utilisateurs}. Les trois modèles
+    diffèrent dans le nombre d'aspects du cloud qui est géré par le fournisseur
+    et non par le client. On peut voir dans l'annexe \ref{modeles} ce qui
+    différencie les différents modèles proposés. \\
 
-    \subsection{Quelques statistiques}
-      Un bon moyen de visualiser l'ampleur que le cloud à prit dans le monde est
-      de l'illustrer par quelques statistiques
-      \begin{itemize}
-        \item Environ 94\% des entreprises utilisent des services de cloud.
-        \item En 2025, selon les prévisions actuelles, 100 zettabytes de données
-              devraient être stockées sur des services en ligne
-              \footnote{Cela représente 10$^{23}$ octets de données soit
-              10$^{11}$ disques dur de 1To}.
-        \item En 2013, au total, seulement un exabyte de données était stocké
-              sur des services de cloud\footnote{100 zettabytes = 100000
-              exabytes}.
-      \end{itemize}
+    Un bon moyen de visualiser l'ampleur que le cloud à prit dans le monde est
+    de l'illustrer par quelques statistiques
 
-      On peut voir par ces quelques statistiques que non seulement le nombre de
-      données stockées en ligne est gigantesque, mais aussi qu'il croit très
-      rapidement, il est donc nécessaire de se prémunir contre les risques
-      potentiellement encourus.
+    \begin{itemize}
+      \item Environ 94\% des entreprises utilisent des services de cloud.
+      \item En 2025, selon les prévisions actuelles, 100 zettabytes de données
+            devraient être stockées sur des services en ligne
+            \footnote{Cela représente 10$^{23}$ octets de données soit
+            10$^{11}$ disques dur de 1To}.
+      \item En 2013, au total, seulement un exabyte de données était stocké
+            sur des services de cloud\footnote{100 zettabytes = 100000
+            exabytes}.
+    \end{itemize}
 
-    \subsection{Différents modèles de cloud}
-      Les fournisseurs de services de cloud peuvent proposer différents modèles,
-      proposant différents prestations que l'entreprise gère ou non pour
-      l'utilisateur, les trois modèles généralement proposés sont les service
-      d'infrastructure, de plateforme et de logiciel, respectivement nommés
-      IaaS, PaaS et SaaS\footnote{aaS signifie as-a-Service, cette mention
-      signifie qu'un fournisseur prend en charge la gestion du service et de
-      certaines fonctionnalités pour les utilisateurs}. La différence entre ces
-      trois modèles réside en le nombre de fonctionnalité dont le fournisseur
-      laisse la gestion à l'utilisateur, le modèle IaaS est celui qui laisse le
-      plus de fonctionnalités à la gestion de l'utilisateur, contrairement au
-      modèle SaaS qui lui est géré complètement par le fournisseur. Néanmoins,
-      aucun des modèles ne laisse au client la possibilité de gérer les
-      fonctionnalités concernant l'accès réseau et le système de stockage
-      utilisé.
+    On peut voir par ces quelques statistiques que non seulement le nombre de
+    données stockées en ligne est gigantesque, mais aussi qu'il croit très
+    rapidement, il est donc nécessaire de se prémunir contre les risques
+    potentiellement encourus. \\
+
+    Afin de visualiser ce que représente la sécurité dans le cloud, il va être
+    nécessaire de se demander ce qui peut le menacer, quelle genre de faille
+    pourrait héberger un tel service, sont elles seulement techniques ?.
+    Ensuite, il sera pertinent d'observer les façons d'anticiper les menaces, et
+    quelles sont les protocoles déjà établis pour s'en prémunir. Enfin, on
+    pourrait se demander ce qu'il manque aujourd'hui dans le domaine de la
+    sécurité des services cloud, et si l'intelligence artificielle ne pourrait
+    pas nous aider à détecter des attaques en cours ainsi qu'à prévenir les
+    faille de sécurité.
 
   \section{Les failles de sécurité qui peuvent mener à un vol de données}
     L'inquiétude suscitée par le cloud est que ce genre de service hébèrge
-    énormément d'utilisateurs. Si un attaquant réussi à pénétrer le cloud, il
-    met la main sur les données de l'intégralité des personnes qui en font
+    souvent beaucoup d'utilisateurs. Si un attaquant réussi à pénétrer un cloud,
+    il met la main sur les données de l'intégralité des personnes qui en font
     l'usage. Nous allons donc voir ce qui pourrait permettre à un attaquant de
     pouvoir voler les données stockées en ligne dans ce type de service.
 
-    \subsection{Erreurs humaines et contrôle d'accès}
-      La grande majorité des failles qui ont mené à des vols de données sur
-      un cloud proviennent d'une erreur humaine, on peut citer parmis elles les
-      défauts de configuration. c'est le modèle IaaS qui est mis en cause dans
-      la plupart des cas. En effet, ce modèle de cloud est très flexible et
-      permet aux utilisateurs de pouvoir configurer et gérer de nombreux aspects
-      du cloud qu'ils utilisent, en les configurant potentiellement d'une façon
-      trop peu sécurisée. Pour citer l'étude [AF2019], "\textit{about 99\% of
-      misconfigurations go unnoticed by companies using IaaS}".
-      \footnote{Traduction : Environ 99\% des erreurs de configurations ne sont
-      pas remarquées par les entreprises utilisant le modèle IaaS}. \\
+    \subsection{Différentes erreurs humaines}
+      La grande majorité des failles qui ont mené à des vols ou pertes de
+      données sur un cloud proviennent d'une erreur humaine, une mauvaise
+      application d'une routine\footnote{Les anglophones parlent de workflow}
+      lors d'un changement de configuration ou d'architecture peut mener
+      l'ouverture d'une brèche.
 
-      Des erreurs peuvent aussi être commises losqu'il s'agit de l'accès des
-      utilisateurs aux services et aux données stockées. Parfois un trop grand
-      nombre de personne peut avoir accès à des données sensibles, par exemple
-      au sein d'une entreprise, sans pour autant que cela soit nécessaire, cela
-      découlant d'un manque de contrôle de ces accès. Laisser à trop de
-      personnes l'accès à des données sensibles multiplie le risque d'attaque.
-      On peut imaginer un attaquant extérieur qui pourrait vouloir pénétrer le
-      stockage par ricochet en utilisant les utilisateurs concernés, mais aussi
-      les utilisateurs eux-mêmes qui pourrait cacher un attaquant interne, il
-      est donc nécessaire d'assurer un contrôle des accès rigoureux.
+      \subsubsection{Défauts de configuration}
+        La configuration d'un service cloud est essentielle, c'est elle qui va
+        permettre d'assigner des droits aux utilisateurs et c'est par elle que
+        l'on va pouvoir mettre en place les mesures de sécurité du service si le
+        fournisseur de solution ne prend pas en charge cette tâche. Des
+        configurations de ce genre de service peuvent être source d'erreur et
+        mener à l'ouverture de failles. On sait que c'est le modèle
+        \textbf{IaaS} qui est mis en cause dans la plupart des cas. En effet, ce
+        modèle de cloud est très flexible et permet aux utilisateurs/entreprises
+        de pouvoir configurer et gérer de nombreux aspects du cloud qu'ils
+        utilisent, en les configurant potentiellement d'une façon trop peu
+        sécurisée. Pour citer l'étude [AF2019], "\textit{about 99\% of
+        misconfigurations go unnoticed by companies using IaaS}".
+        \footnote{Traduction : Environ 99\% des erreurs de configurations ne
+        sont pas remarquées par les entreprises utilisant le modèle IaaS}. \\
+
+      \subsubsection{Mauvaise gestion du contrôle d'accès}
+        Un cas particulier très répandu quand on parle de mauvaise configuration
+        est une mauvaise gestion du contrôle d'accès des utilisateurs du
+        service. Parfois un trop grand nombre de personne utilisant le service
+        peut avoir accès à des données sensibles, par exemple au sein d'une
+        entreprise, sans pour autant que cela soit nécessaire. Ce phénomène
+        découle d'un manque de contrôle de ces accès. Laisser à trop de
+        personnes l'accès à des données sensibles multiplie le risque d'attaque.
+        On peut imaginer un attaquant extérieur qui pourrait vouloir pénétrer le
+        stockage par ricochet en utilisant les utilisateurs concernés, mais
+        aussi les utilisateurs eux-mêmes qui pourrait cacher un attaquant
+        interne, il est donc nécessaire d'assurer un contrôle des accès
+        rigoureux.
+
+        On peut ici citer l'exemple de la plateforme Twitch\footnote{
+        \url{Twitch.tv} est une plateforme permettant de diffuser du contenu en
+        direct sur internet.}. En effet, après un changement de configuration du
+        serveur, ce dernier à laissé à beaucoup trop de personnes travaillant
+        dans l'entreprise, l'accès au code source et à certaines données
+        sensibles alors qu'elles n'étaient avant pas acréditées à voir ce
+        contenu. La plateforme aurait perdu, à cause de ce défaut de
+        configuration, 125Go de données, contenant des informations privées
+        essentielles.
+
+      \subsubsection{Sauvegardes et mots de passe}
+        Lorsqu'on parle d'un service géré par exemple par une entreprise, il est
+        nécessaire de parler de sauvegardes. En effet, pour s'assurer de perdre
+        le moins de données en cas de suppression accidentelle, ou bien
+        volontaire par un éventuel attaquant. Ce qui peut être très courant est
+        bien sur une sauvegarde d'une ou plusieurs base de données. Une erreur
+        pourrait de ne pas faire attention où l'on stocke cette sauvegarde.
+        Contenant des données sensibles comme par exemple des mots de passe,
+        il est important de faire attention à l'endroit prévu pour stocker de
+        telles sauvegardes.
 
     \subsection{La gestion de la mémoire dans le cloud}
       À l'image d'un disque dur de taille normale, le cloud est un espace de
@@ -113,15 +175,26 @@
       appartiennent pas.
 
       En effet, sur la plupart des machines, il est possible de récupérer des
-      données qui ont été effacés. Les données ne sont en réalité pas rééllement
-      effacées tant que le disque ou le dispositif de stockage n'a pas réécrit
-      d'autres données par dessus. Si un utilisateur dispose d'un morceau de la
-      plage mémoire allouée précedémment à un autre utilisateur, il pourra donc
-      tenter de les récupérer. \\
+      données qui ont été effacés, les données ne sont en réalité pas rééllement
+      effacées. Lorsqu'on supprime un fichier sur un système, par exemple un
+      système \verb+UNIX+ avec la commande \verb+rm+, ce dernier supprime la
+      référence vers le fichier, pas son contenu. Celui-ci est donc toujours
+      disponible si l'on possède une autre référence y menant, et de manière
+      générale, n'est pas supprimé tant que le disque ou le dispositif de
+      stockage n'a pas réécrit d'autres données par dessus. Si un utilisateur
+      dispose d'un morceau de la plage mémoire allouée précedémment à un autre
+      utilisateur, il pourra donc tenter de les récupérer.
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[scale=.5]{img/schema_memoire.png}
+        \caption{Illustration du comportement du stockage durant une suppression
+        basique}
+      \end{figure}
 
       Un autre problème posé par le partage massif du cloud est la fragmentation
       de la mémoire. En effet, un problème pourraient résider dans la mauvaise
-      ségmentation de la mémoire. Ceci pourrait permettre l'accès au même
+      ségmentation de celle-ci. Ceci pourrait permettre l'accès au même
       morceau de mémoire par plusieurs personnes, et un utilisateur pourrait
       voler des données à un autre, ou même récupérer des données supprimées
       comme dit plus haut.
@@ -129,10 +202,19 @@
     \subsection{Risques physiques}
       Les clouds sont des espaces de stockages, il est aussi nécessaire de
       considérer les menaces liées aux supports de stockages physiques des
-      données comme les centres de stockages. Un attaquant pourrait très bien
-      décider de pirater physiquement un centre de données, il est donc aussi
-      nécessaire de se prémunir des risques physiques liées à l'intégrité des
-      données stockées dans le cloud.
+      données comme les centres de stockages. On sait que la perte de données
+      à proprement parlé est peu probable quand on applique le principe de
+      \textbf{redondance}. Ce principe repose dans le fait de posséder plusieurs
+      sauvegardes du système et des données à plusieurs endroits
+      géographiquement différents. La probabilité pour qu'une intempérie ou un
+      problème matériel touche tous les centre de données utilisés est donc
+      diminuée. La redondance permet donc de se prémunir des problèmes de ce
+      type, mais pas des vols de données. \\
+
+      En effet, il est aussi nécessaire de réfléchir à la protection des centre
+      de données. La sécurité des centres est importante car ils contiennent
+      l'intégralité des données utilisateurs. On peut imaginer des attaquants
+      essayer de pirater physiquement un centre de données.
 
   \section{Anticipation et prévention des risques}
       L'identification des risques liés à une installation dans le cloud est
@@ -157,11 +239,11 @@
       sociale. D'autant plus que ce sont des failles critiques qui peuvent
       parfois déboucher sur des pertes de données conséquentes. \\
 
-      Pour revenir sur un court exemple, on pourrait reparler de l'attaque 
-      subie par l'entreprise Uber en 2022 qui à eu lieu suite à un fait 
-      d'ingénieurie sociale qui a permis à un attaquant l'accès à l'un des 
-      comptes administrateur de l'entreprise. Avec une politique de conduite 
-      plus stricte et une mise en garde sur les risques, l'attaque aurait pu 
+      Pour revenir sur un court exemple, on pourrait reparler de l'attaque
+      subie par l'entreprise Uber en 2022 qui à eu lieu suite à un fait
+      d'ingénieurie sociale qui a permis à un attaquant l'accès à l'un des
+      comptes administrateur de l'entreprise. Avec une politique de conduite
+      plus stricte et une mise en garde sur les risques, l'attaque aurait pu
       être détectée plus tôt et surtout évitée. \\
 
     \subsection{Sur le plan physique}
@@ -179,8 +261,8 @@
       l'organisation, les clients, les données, les systèmes etc.} ou SAS 70
       \footnote{State on Auditing Standards no. 70, remplacée par SSAE16. Il
       s'agit d'une certification spécialisée pour les centre de données} par
-      exemple. De plus, certains fournisseurs de cloud ont une politique de 
-      confidentialité concernant l'emplacement et les spécificités de leurs 
+      exemple. De plus, certains fournisseurs de cloud ont une politique de
+      confidentialité concernant l'emplacement et les spécificités de leurs
       datacenters afin de se prémunir contre les menaces. \\
 
       Tout cela étant dit, une perte de donnée ou une rupture d'accès à un
@@ -198,55 +280,55 @@
       service pour des applications cloud qui y seraient sensibles.
 
     \subsection{Sur le plan technique}
-      L'une des difficultés d'un système dans le cloud réside dans les 
-      responsabilités d'actions ambiguës. En effet, si l'on considère les 
-      trois types de cloud, à savoir IaaS, PaaS et SaaS, il est parfois 
-      difficile pour un utilisateur de comprendre quelles actions sont à 
+      L'une des difficultés d'un système dans le cloud réside dans les
+      responsabilités d'actions ambiguës. En effet, si l'on considère les
+      trois types de cloud, à savoir IaaS, PaaS et SaaS, il est parfois
+      difficile pour un utilisateur de comprendre quelles actions sont à
       sa charge. \\
 
-      Dans le cas d'un cloud SaaS, l'utilisateur a très peu de contrôle sur 
+      Dans le cas d'un cloud SaaS, l'utilisateur a très peu de contrôle sur
       la manière dont les choses vont fonctionner à l'intérieur de sa machine.
-      En réalité, l'ensemble de la configuration système et logicielle sur 
+      En réalité, l'ensemble de la configuration système et logicielle sur
       laquelle va reposer son service est aux mains du fournisseur d'accès.
       Cela a de nombreux avantages puisque l'ensemble des côuts d'architecture
-      et de sécurisation sont finalement gérés par le fournisseur de service qui 
-      garantit en plus de cela un niveau de sécurité en théorie plus 
-      intéressant du fait de son expertise sur ses propres systèmes. Un point 
-      crucial et pourtant évident reste cependant aux mains de l'utilisateur. 
-      Il s'agit du choix de moyens d'authentification aussi sécurisés que 
+      et de sécurisation sont finalement gérés par le fournisseur de service qui
+      garantit en plus de cela un niveau de sécurité en théorie plus
+      intéressant du fait de son expertise sur ses propres systèmes. Un point
+      crucial et pourtant évident reste cependant aux mains de l'utilisateur.
+      Il s'agit du choix de moyens d'authentification aussi sécurisés que
       possible, quite à utiliser de l'authentification multi-factorielle voir
-      de l'expiration de mots de passes. Il s'agit là du seul point vraiment 
+      de l'expiration de mots de passes. Il s'agit là du seul point vraiment
       sensible de cette configuration. \\
 
-      L'utilisation d'un cloud de type PaaS n'est pas très différente de 
-      celle d'un SaaS d'un point de vue sécurité informatique. L'utilisateur 
+      L'utilisation d'un cloud de type PaaS n'est pas très différente de
+      celle d'un SaaS d'un point de vue sécurité informatique. L'utilisateur
       n'aura pas non plus à s'occuper de la configuration système et logicielle
-      qui reste ainsi au fournisseur. Cependant un utilisateur de ce type de 
-      cloud devra se charger de la sécurité des applications qu'il décidera de 
-      déployer sur le système ainsi que de leurs services associés comme les 
-      bases de données par exemple. La gestion de la sécurité de ces 
+      qui reste ainsi au fournisseur. Cependant un utilisateur de ce type de
+      cloud devra se charger de la sécurité des applications qu'il décidera de
+      déployer sur le système ainsi que de leurs services associés comme les
+      bases de données par exemple. La gestion de la sécurité de ces
       applications peut être déléguée à des experts, ou dans le cas d'une
-      entreprise suffisamment importante, elle sera très certainement gérée 
+      entreprise suffisamment importante, elle sera très certainement gérée
       par l'un des services de l'entreprise en question. \\
 
-      Même si l'utilisation d'un cloud SaaS ou Paas semble idéale d'un point 
-      de vue sécurité pour la plupart des utilisateurs, il ne s'agit cependant 
-      pas d'une solution universelle puisque certains utilisateur particuliers 
-      ou entreprises ont besoin de plus de flexibilité. Plus de flexibilité 
-      implique inévitablement plus de responsabilités. Ainsi sur un cloud de 
-      type IaaS, l'utilisateur se trouve pratiquement sur une machine vide sur 
-      laquelle il va devoir installer un système d'exploitation et procéder à 
+      Même si l'utilisation d'un cloud SaaS ou Paas semble idéale d'un point
+      de vue sécurité pour la plupart des utilisateurs, il ne s'agit cependant
+      pas d'une solution universelle puisque certains utilisateur particuliers
+      ou entreprises ont besoin de plus de flexibilité. Plus de flexibilité
+      implique inévitablement plus de responsabilités. Ainsi sur un cloud de
+      type IaaS, l'utilisateur se trouve pratiquement sur une machine vide sur
+      laquelle il va devoir installer un système d'exploitation et procéder à
       sa configuration. Par dessus ce système, il faut ensuite installer les
-      logiciels et applications nécessaires. A ce moment là, sécuriser le 
+      logiciels et applications nécessaires. A ce moment là, sécuriser le
       système se rapproche finalement de ce que l'on connaissait par le passé
       quand chaque enntreprise disposait de sa propre installation physique. \\
 
       La complexité de la sécurisation d'un système cloud réside plus souvent
-      du côté du fournisseur de cloud tel qu'Azure, AWS, OVH et beaucoup 
-      d'autres. De ce côté là chaque fournisseur développe ses propres 
+      du côté du fournisseur de cloud tel qu'Azure, AWS, OVH et beaucoup
+      d'autres. De ce côté là chaque fournisseur développe ses propres
       technologies de sécurité. Les technologies et outils sont nombreux mais
-      on peut citer les systèmes d'authentification basés sur les privilèges, 
-      les systèmes de monitoring et d'analyse du système ou bien des logiciels 
+      on peut citer les systèmes d'authentification basés sur les privilèges,
+      les systèmes de monitoring et d'analyse du système ou bien des logiciels
       de chiffrement des données par exemple. \\
 
       Malgré les solutions qui existent aujourd'hui, la sécurité du cloud
@@ -387,10 +469,22 @@
       \item \href{https://www.runtime.org/recoverability.htm}{Autres données sur la récupération de données effacées} : \url{https://www.runtime.org/}
       \item \href{https://www.techniques-ingenieur.fr/actualite/articles/la-securite-dans-le-cloud-une-approche-fournisseur-basee-sur-les-risques-15550/}{Différents risques liés cloud} : \url{https://www.techniques-ingenieur.fr/}
       \item \href{https://www.magic.fr/cloud-public-les-erreurs-de-configuration-sont-extremement-frequentes/}{Erreurs humaines, défauts de configuration} : \url{https://www.magic.fr/}
-
+      \item \href{https://www.polymerhq.io/blog/breach/how-did-the-twitch-data-leak-happen/}{Faille de la plateforme Twitch} : \url{https://www.polymerhq.io/}
+      \item \href{https://learn.microsoft.com/fr-fr/compliance/assurance/assurance-datacenter-architecture-infrastructure}{Infrastructure des centre de données, principe  de redondance}  \url{https://learn.microsoft.com/}
 
       \item \href{https://www.rcarre.com/blog/intelligence-artificielle-auto-apprenante-pour-le-cloud-and-saas/}{IA auto apprenante pour le cloud et particulièrement le modèle SaaS} : \url{https://www.rcarre.com}
       \item \href{https://itsocial.fr/partenaires/oracle-partenaire/tribunes-oracle/securite-du-cloud-entre-intelligence-artificielle-et-responsabilite-humaine/}{Sécurité entre IA et responsabilite humaine} : \url{https://itsocial.fr}
-
     \end{itemize}
+
+    \section{Annexes}
+    \appendix
+      \section{Différents modèles de cloud}
+        \begin{figure}[h]
+          \centering
+          \includegraphics[scale=.4]{img/modeles.jpg}
+          \caption{Services gérés par le fournisseur ou par le client en fonction
+          du modèle}
+        \end{figure}
+        \label{modeles}
+
 \end{document}
