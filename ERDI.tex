@@ -13,11 +13,14 @@
 \date{}
 
 \begin{document}
+  \renewcommand{\thepage}{}
   \maketitle
   \newpage
   \tableofcontents
   \newpage
 
+  \renewcommand{\thepage}{\arabic{page}}
+  \setcounter{page}{1}
   \selectlanguage{french}
   \begin{abstract}
     Ce rapport présente une étude sur ce que peut représenter la sécurité
@@ -41,6 +44,7 @@
     and attacks in the future.
   \end{abstract}
 
+  \newpage
   \selectlanguage{french}
   \section{Introduction}
     Aujourd'hui, une majorité de nos données personnelles, professionnelles,
@@ -52,10 +56,10 @@
     Le cloud désigne l'ensemble des serveurs auquel on peut accéder en ligne,
     ces serveurs peuvent héberger non seulement des données, mais aussi des
     services, des logiciels, etc. Des entreprises comme Microsoft, Amazon ou
-    encore OVH proposent de louer des serveurs afin que les particuliers comme
-    les entreprises puissent héberger des services en ligne. On distingue ici
-    quatres modèles de cloud proposé par les fournisseurs, le modèle sur site,
-    IaaS, PaaS et SaaS, \footnote{aaS signifie as-a-Service, cette mention
+    encore OVHCloud proposent de louer des serveurs afin que les particuliers
+    comme les entreprises puissent héberger des services en ligne. On distingue
+    ici quatres modèles de cloud proposé par les fournisseurs, le modèle sur
+    site, IaaS, PaaS et SaaS, \footnote{aaS signifie as-a-Service, cette mention
     signifie qu'un fournisseur prend en charge la gestion du service et de
     certaines fonctionnalités pour les utilisateurs}. Les trois modèles
     diffèrent dans le nombre d'aspects du cloud qui est géré par le fournisseur
@@ -100,7 +104,8 @@
 
     \subsection{Différentes erreurs humaines}
       La grande majorité des failles qui ont mené à des vols ou pertes de
-      données sur un cloud proviennent d'une erreur humaine, une mauvaise
+      données sur un cloud proviennent, comme pour une grosse partie des
+      systèmes informatiques actuels, d'une erreur humaine. Une mauvaise
       application d'une routine\footnote{Les anglophones parlent de workflow}
       lors d'un changement de configuration ou d'architecture peut mener
       l'ouverture d'une brèche.
@@ -119,13 +124,13 @@
         sécurisée. Pour citer l'étude [AF2019], "\textit{about 99\% of
         misconfigurations go unnoticed by companies using IaaS}".
         \footnote{Traduction : Environ 99\% des erreurs de configurations ne
-        sont pas remarquées par les entreprises utilisant le modèle IaaS}. \\
+        sont pas remarquées par les entreprises utilisant le modèle IaaS}.
 
       \subsubsection{Mauvaise gestion du contrôle d'accès}
         Un cas particulier très répandu quand on parle de mauvaise configuration
         est une mauvaise gestion du contrôle d'accès des utilisateurs du
-        service. Parfois un trop grand nombre de personne utilisant le service
-        peut avoir accès à des données sensibles, par exemple au sein d'une
+        service. Parfois, un trop grand nombre de personne l'utilisant peuvent
+        avoir accès à des données sensibles, par exemple au sein d'une
         entreprise, sans pour autant que cela soit nécessaire. Ce phénomène
         découle d'un manque de contrôle de ces accès. Laisser à trop de
         personnes l'accès à des données sensibles multiplie le risque d'attaque.
@@ -159,7 +164,7 @@
     \subsection{La gestion de la mémoire dans le cloud}
       À l'image d'un disque dur de taille normale, le cloud est un espace de
       stockage partagé par plusieurs systèmes et/ou utilisateurs, il est
-      important de se concentrer sur la gestion de l'espace alloué à chacun.
+      important de se concentrer sur la gestion de l'espace alloué à chacun. \\
 
       Un des problèmes cité page 3/4 de cette étude [VR2016] est le fait que la
       mémoire effacée peut être récupérée. En effet, \textit{"The resource
@@ -187,7 +192,7 @@
 
       \begin{figure}[h]
         \centering
-        \includegraphics[scale=.5]{img/schema_memoire.png}
+        \includegraphics[scale=.54]{img/schema_memoire.png}
         \caption{Illustration du comportement du stockage durant une suppression
         basique}
       \end{figure}
@@ -211,10 +216,16 @@
       diminuée. La redondance permet donc de se prémunir des problèmes de ce
       type, mais pas des vols de données. \\
 
-      En effet, il est aussi nécessaire de réfléchir à la protection des centre
-      de données. La sécurité des centres est importante car ils contiennent
-      l'intégralité des données utilisateurs. On peut imaginer des attaquants
-      essayer de pirater physiquement un centre de données.
+      Néanmoins, un centre de donnée peut bel et bien être victime de sinistres,
+      causant la perte de nombreuses données. On peut penser à l'incendie qui
+      avait frappé le centre de données d'OVHCloud à Strasbourg. De nombreux
+      utilisateurs, particuliers comme des entreprises, ont perdu de nombreuses
+      données. Même des services gouvernementaux et des médias furent impactés
+      par l'incident.
+
+      Il est aussi nécessaire de réfléchir à la protection humaine des centre de
+      données. On peut imaginer des attaquants essayer de pirater physiquement
+      un centre de données.
 
   \section{Anticipation et prévention des risques}
       L'identification des risques liés à une installation dans le cloud est
@@ -226,31 +237,32 @@
 
       \subsection{Un aspect social}
       Le domaine de l'ingénieurie sociale est en hausse car il s'agit très
-      certainement de la méthode la plus simple et non moins efficace pour
+      certainement de la méthode la plus simple et non la moins efficace pour
       obtenir l'accès à des données ou des services illégitimement. Il est
       crucial pour quiconque s'intéresse à la technologie du cloud et d'autant
       plus pour les entreprises de se former et de former l'ensemble des
-      équipes au risques bien réels auxquels ils peuvent faire face dans leur
-      quotidien. \\
+      équipes, par exemple au sein, d'une entreprise, aux risques bien réels
+      auxquels ils peuvent faire face dans leur quotidien. \\
 
-      Pour une entreprise du cloud il est aussi nécessaire de définir
-      clairement des règles de conduite pour l'ensemble du personnel afin
-      d'éviter au maximum les failles de sécurité sensibles à l'ingénieurie
-      sociale. D'autant plus que ce sont des failles critiques qui peuvent
-      parfois déboucher sur des pertes de données conséquentes. \\
+      Pour une entreprise fournissant des services cloud, il est aussi
+      nécessaire de définir clairement des règles de conduite pour l'ensemble du
+      personnel afin d'éviter au maximum les failles de sécurité sensibles à
+      l'ingénieurie sociale. D'autant plus que ce sont des failles critiques qui
+      peuvent parfois mener à des pertes conséquentes sur l'ensemble des données
+      hébergées. \\
 
-      Pour revenir sur un court exemple, on pourrait reparler de l'attaque
-      subie par l'entreprise Uber en 2022 qui à eu lieu suite à un fait
-      d'ingénieurie sociale qui a permis à un attaquant l'accès à l'un des
-      comptes administrateur de l'entreprise. Avec une politique de conduite
-      plus stricte et une mise en garde sur les risques, l'attaque aurait pu
-      être détectée plus tôt et surtout évitée. \\
+      Pour revenir sur un court exemple, on pourrait citer l'attaque subie par
+      l'entreprise Uber en 2022 qui à eu lieu suite à un fait d'ingénieurie
+      sociale qui a permis à un attaquant l'accès à l'un des comptes
+      administrateur de l'entreprise. Avec une politique de conduite plus
+      stricte et une mise en garde sur les risques, l'attaque aurait pu être
+      détectée plus tôt, ou même évitée. \\
 
     \subsection{Sur le plan physique}
       Les clouds étant des espaces de stockages numériques auxquels un
       utilisateur à très peu voir pas du tout d'accès sur le plan physique.
       Qu'il soit un particulier ou une entreprise, lorsqu'un utilisateur
-      prévoit l'utilisation d'un service cloud, il devient alors nécessaire de
+      prévoit de souscrire à un service cloud, il devient alors nécessaire de
       procéder à une étude des risques physiques liés au fournisseur de
       ce service et à la politique de sécurité qu'il applique au sein de ses
       infrastructures. Y a-t-il de la surveillance, des contrôle d'accès ou
@@ -267,24 +279,26 @@
 
       Tout cela étant dit, une perte de donnée ou une rupture d'accès à un
       service dans le cloud ne provient pas toujours d'une action volontaire
-      d'un ou plusieurs individus. C'est pour cela que le contrôle d'accès et
-      la surveillance ne suffisent pas à garantir la sécurité des données ou
+      d'un ou plusieurs individus. C'est pour cela que le contrôle d'accès et la
+      surveillance ne suffisent pas à garantir la sécurité des données ou
       du service. Il est aussi nécessaire de se prémunir des risques liés à des
-      catastrophes naturelles comme les incendies, les inondations ou bien
-      plus simplement des coupures de courant par exemple. Cela peut-être
+      catastrophes naturelles comme les incendies, les inondations ou bien plus
+      simplement des coupures de courant par exemple. Cela peut-être
       effectué en prévoyant une redondance des données grâce à des sauvegardes
-      régulières chiffrées et stockées dans d'autres infrastructures. Dans le
-      cadre d'un service qui outrepasse le simple stockage de données, il est
-      aussi nécessaire de prévoir une redirection du service vers une autre
-      plateforme fonctionnelle. Cela parmet d'éviter les interruptions de
-      service pour des applications cloud qui y seraient sensibles.
+      régulières chiffrées et stockées dans d'autres infrastructures.
+
+      Dans le cadre d'un service qui outrepasserait le simple stockage de
+      données, il est aussi nécessaire de prévoir une redirection du service
+      vers une autre plateforme fonctionnelle. Cela parmet d'éviter les
+      interruptions de service pour des applications cloud qui y seraient
+      sensibles.
 
     \subsection{Sur le plan technique}
       L'une des difficultés d'un système dans le cloud réside dans les
       responsabilités d'actions ambiguës. En effet, si l'on considère les
       trois types de cloud, à savoir IaaS, PaaS et SaaS, il est parfois
       difficile pour un utilisateur de comprendre quelles actions sont à
-      sa charge. \\
+      sa charge et quelles actions sont prises en charge par le fournisseur. \\
 
       Dans le cas d'un cloud SaaS, l'utilisateur a très peu de contrôle sur
       la manière dont les choses vont fonctionner à l'intérieur de sa machine.
@@ -399,19 +413,33 @@
       reconnaitre les intentions de celui-ci en trouvant son but grâce à des
       paternes déjà connu. Enfin, l’IA doit reconnaître le type d’attaque, quand
       et comment va-t-elle se passer et les mesures qu’elle doit mettre en œuvre
-      pour éviter ces attaques. Ces préventions passant par la perception, la
+      pour éviter ces attaques. Cette prévention, passant par la perception, la
       compréhension et la projection de ses attaques utilisent 3 types
-      d’approche mathématique, le modèle discret, le modèle continu et le
-      Machine Learning. Ces 3 approches permettent de cibler les différents
-      paramètres d’une attaque et son type. On retrouve notamment dans ces
-      approches, l’utilisation de graphes orientés pondérés pour prédire avec
-      une certaine probabilité le prochain type d’attaque en fonction de la
-      précédente, comme on peut le voir dans la figure \ref{fig:1}. \\
+      d’approches. Certaines méthodes se basent sur les mathématiques discrètes,
+      d'autres sur un modèle mathématique continu, d'autres encore s'appuyant
+      sur des techniques d'apprentissage machine et de fouille de données. Cette
+      classification se base sur celle de l'étude [MJEP18]. \\
+
+
+      On retrouve par exemple dans une de ces approches l’utilisation de graphes
+      orientés pondérés pour prédire avec une certaine probabilité le prochain
+      type d’attaque en fonction de la précédente. On peut voir dans la figure
+      \ref{fig:1} un réseau bayésien\footnote{Aussi appelé graphe d'attaque
+      bayésien.}. Les probabilités de ce réseau bayésien peuvent être calculé
+      grâce à de l'apprentissage machine couplé à l'exploration des données de
+      précédentes attaques. On peut aussi obtenir des données fiables d'un
+      expert dans le domaine.
+
+      Dans le graphe présenté en figure \ref{fig:1}, on peut distinguer dans le
+      noeud \textit{D} l'attaquant. On sait qu'il attaque à distance et qu'il va
+      utiliser une faille de dépassement de tampon, la probabilité qu'il essaye
+      sur le serveur FTP est la plus élevée.
 
       \begin{figure}[h]
         \centering
         \includegraphics[scale=.4]{img/attackgraph.png}
-        \caption{Graphe bayesien d’une attaque potentielle. Source : [MJEP18]}
+        \caption{Graphe bayesien pondéré représentant une attaque potentielle.
+        Source : [MJEP18]}
         \label{fig:1}
       \end{figure}
 
@@ -448,7 +476,29 @@
       ceux-ci.
 
   \section{Conclusion}
+    Comme nous avons pu le voir, préserver la sécurité du cloud n'est pas chose
+    aisée. Le facteur humain est extrêmement présent et il est difficile de
+    prévoir toutes les situations. Toute personne abilitée à faire usage du
+    système est une potentielle source de failles, et il est pratiquement
+    impossible de garder un oeil partout, il faut donc configurer très
+    précisement le système cloud que l'on utilise, et éviter tant que possible
+    d'opter pour un modèle IaaS à moins d'avoir les compétences nécessaire pour
+    le configurer de manière robuste. Il ne faut néanmoins ne pas être
+    pessimiste, des protocoles et des specifications techniques permettent
+    aujourd'hui au cloud d'être une solution de stockage acceptable, Il est en
+    revanche nécessaire de prévoir ce qui pourrait le rendre encore plus
+    sécurisé. En effet, la sécurité du cloud est un enjeu pour l'avenir, et
+    c'est dans le but de l'améliorer que l'on peut considèrer l'utilisation
+    parallèle d'autres technologies. C'est en ce sens que l'intelligence
+    artificielle pourrait aider à la sécurisation du cloud dans le futur. Si
+    nous arrivons à prédire les mouvements d'un attaquant, qu'il soit interne ou
+    externe, ou à détecter les failles de sécurité de manière automatique, le
+    cloud pourrait devenir bien plus robuste qu'il ne l'est aujourd'hui. \\
 
+    De quelles autre technologie prometteuse pourrait on se servir pour
+    améliorer la sécurité en matière de cloud ? Seul l'avenir nous le dira.
+
+  \newpage
   \section{Bibliographie}
     \begin{itemize}
       \item \href{https://www.sciencedirect.com/science/article/pii/S1877050916315812}{[VR2016] A Study on Data Storage Security Issues in Cloud Computing} : \url{https://www.sciencedirect.com/}
@@ -471,19 +521,19 @@
       \item \href{https://www.magic.fr/cloud-public-les-erreurs-de-configuration-sont-extremement-frequentes/}{Erreurs humaines, défauts de configuration} : \url{https://www.magic.fr/}
       \item \href{https://www.polymerhq.io/blog/breach/how-did-the-twitch-data-leak-happen/}{Faille de la plateforme Twitch} : \url{https://www.polymerhq.io/}
       \item \href{https://learn.microsoft.com/fr-fr/compliance/assurance/assurance-datacenter-architecture-infrastructure}{Infrastructure des centre de données, principe  de redondance}  \url{https://learn.microsoft.com/}
+      \item \href{https://fr.wikipedia.org/wiki/Incendie_du_centre_de_donn%C3%A9es_d%27OVHcloud_%C3%A0_Strasbourg}{Incendie du centre de données d'OVH} : \url{https://fr.wikipedia.org/}
 
       \item \href{https://www.rcarre.com/blog/intelligence-artificielle-auto-apprenante-pour-le-cloud-and-saas/}{IA auto apprenante pour le cloud et particulièrement le modèle SaaS} : \url{https://www.rcarre.com}
       \item \href{https://itsocial.fr/partenaires/oracle-partenaire/tribunes-oracle/securite-du-cloud-entre-intelligence-artificielle-et-responsabilite-humaine/}{Sécurité entre IA et responsabilite humaine} : \url{https://itsocial.fr}
     \end{itemize}
 
-    \section{Annexes}
     \appendix
       \section{Différents modèles de cloud}
         \begin{figure}[h]
           \centering
           \includegraphics[scale=.4]{img/modeles.jpg}
-          \caption{Services gérés par le fournisseur ou par le client en fonction
-          du modèle}
+          \caption{Services gérés par le fournisseur ou par le client en
+          fonction du modèle \\ Source : \url{https://architecture-cloud.fr}}
         \end{figure}
         \label{modeles}
 
