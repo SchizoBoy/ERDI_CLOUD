@@ -9,14 +9,31 @@
 \usepackage{amssymb}
 \usepackage{setspace}
 
-\title{Sécurité des données dans le cloud\\Doit-on se méfier du cloud ?}
-\author{M1 Informatique}
+\title{\textbf{Sécurité des données dans le cloud}\\~\\Que représente la
+sécurité informatique dans le domaine du cloud ?}
+\author{}
 \date{}
 
 \begin{document}
   \begin{spacing}{1.1}
   \renewcommand{\thepage}{}
+
   \maketitle
+  \rule{\linewidth}{0.4mm}
+
+  \vspace*{2.6cm}
+  \begin{center}
+    \includegraphics[scale=.5]{img/cloud.png}
+  \end{center}
+
+  \vspace*{4.4cm}
+  \begin{minipage}{.6\linewidth}
+    Enzo CADONI - Jean CHAPUT - Evan SEDENO
+  \end{minipage}
+  \begin{minipage}{.4\linewidth}
+    \includegraphics[scale=.34]{./img/logo.png}
+  \end{minipage}
+
   \newpage
   \tableofcontents
   \newpage
@@ -27,8 +44,8 @@
   \begin{abstract}
     Ce rapport présente une étude sur ce que peut représenter la sécurité
     informatique dans le domaine du cloud. Nous distinguerons d'abord quels
-    peuvent être les phénomènes et les failles que l'on peut rencontrer dans la
-    gestion d'un service cloud. Ensuite, nous exposerons des techniques
+    peuvent être les phénomènes et les failles pouvant mener à des perte ou à
+    des vols de données sur le cloud. Ensuite, nous exposerons des techniques
     actuelles permettant de se prémunir avec plus ou moins d'efficacité de ces
     failles. Enfin, nous nous demanderons si dans l'avenir, l'intelligence
     artificielle ne pourrait pas être une solution particulièrement viable dans
@@ -65,7 +82,7 @@
     signifie qu'un fournisseur prend en charge la gestion du service et de
     certaines fonctionnalités pour les utilisateurs}. Les trois modèles
     diffèrent dans le nombre d'aspects du cloud qui est géré par le fournisseur
-    et non par le client. On peut voir dans l'annexe \ref{modeles} ce qui
+    et non par le client. On peut voir dans l'annexe \ref{fig:modeles} ce qui
     différencie les différents modèles proposés. \\
 
     Un bon moyen de visualiser l'ampleur que le cloud a pris dans le monde est
@@ -97,7 +114,7 @@
     à détecter des attaques en cours ainsi qu'à prévenir les failles de
     sécurité.
 
-  \section{Les failles de sécurité qui peuvent mener à un vol de données}
+  \section{Les risques menaçant l'intégrité des données}
     L'inquiétude suscitée par le cloud est que ce genre de service héberge
     souvent beaucoup d'utilisateurs. Si un attaquant réussit à pénétrer un
     cloud, il met la main sur les données de l'intégralité des personnes qui en
@@ -504,17 +521,13 @@
   \begin{thebibliography}{3}
     \bibitem[VR2016]{VR2016}
     A Study on Data Storage Security Issues in Cloud Computing (2016) : \href{https://www.sciencedirect.com/science/article/pii/S1877050916315812}{https://www.sciencedirect.com/}
-
     \bibitem[AF2019]{AF2019}
     Cloud-Native: The Infrastructure-as-a-Service (IaaS) Adoption and Risk
     Report (2019) : \href{https://www.mcafee.com/enterprise/en-us/assets/reports/restricted/rp-cloud-adoption-risk-report-iaas.pdf}{https://www.mcafee.com/}
-
     \bibitem[MJEP18]{MJEP18}
     Survey of Attack Projection Prediction and Forecasting in Cyber Security
     (2018) : \href{https://www.researchgate.net/publication/327449459_Survey_of_Attack_Projection_Prediction_and_Forecasting_in_Cyber_Security}{https://www.researchgate.net/}
-
     \bibitem{} \url{https://www.cloudwards.net} : \href{https://www.cloudwards.net/cloud-computing-statistics/}{Quelques statistiques à propos du cloud}
-
     \bibitem{} \url{https://parachute.cloud/} : \href{https://parachute.cloud/cloud-computing-statistics/}{Différentes statistiques sur l'utilisation et la présence du cloud}
     \bibitem{} \url{https://www.globaldots.com} : \href{https://www.globaldots.com/resources/blog/how-much-is-stored-in-the-cloud/}{Données datant de 2013 sur la taille du cloud}
     \bibitem{} \url{https://aws.amazon.com} : \href{https://aws.amazon.com/fr/types-of-cloud-computing/}{Différents types de cloud et de services proposés}
@@ -528,7 +541,6 @@
     \bibitem{} \url{https://www.polymerhq.io/} : \href{https://www.polymerhq.io/blog/breach/how-did-the-twitch-data-leak-happen/}{Faille de la plateforme Twitch}
     \bibitem{} \url{https://learn.microsoft.com/} : \href{https://learn.microsoft.com/fr-fr/compliance/assurance/assurance-datacenter-architecture-infrastructure}{Infrastructure des centre de données, principe  de redondance}
     \bibitem{} \url{https://fr.wikipedia.org/} : \href{https://fr.wikipedia.org/wiki/Incendie_du_centre_de_donn%C3%A9es_d%27OVHcloud_%C3%A0_Strasbourg}{Incendie du centre de données d'OVHCloud}
-
     \bibitem{} \url{https://www.rcarre.com} : \href{https://www.rcarre.com/blog/intelligence-artificielle-auto-apprenante-pour-le-cloud-and-saas/}{IA auto apprenante pour le cloud et particulièrement le modèle SaaS}
     \bibitem{} \url{https://itsocial.fr} : \href{https://itsocial.fr/partenaires/oracle-partenaire/tribunes-oracle/securite-du-cloud-entre-intelligence-artificielle-et-responsabilite-humaine/}{Sécurité entre IA et responsabilité humaine}
   \end{thebibliography}
@@ -543,6 +555,6 @@
         \caption{Services gérés par le fournisseur ou par le client en
         fonction du modèle \\ Source : \url{https://architecture-cloud.fr}}
       \end{figure}
-      \label{modeles}
+      \label{fig:modeles}
   \end{spacing}
 \end{document}
